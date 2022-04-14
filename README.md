@@ -1,7 +1,14 @@
 # AngularMaterialForms
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 13.3.2.
+Цей проект згенеровано за допомогою [Angular CLI](https://github.com/angular/angular-cli) версія 13.3.2.
 
-## Development server
+## Для запуску проекта та перевірки функціоналу в Development режимі 
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+Зкачайте будь ласка репозіторій локально. Перейдіть в терміналі до папки проекту на в корні запустіть команду `npm i`
+Відкрийте проект в IDE. В терміналі запустіть команду `ng serve`, після запуску, відкрийте браузер та перейдіть за адресою `http://localhost:4200/`
+
+У вікні браузера повинна відобразитись форма анкети. Результат сабміту форми виводиться в консоль.
+
+Функціонал реалізовано згідно ТЗ `https://docs.google.com/document/d/1XxnA7XxfX8JHay1UNv0x_6b41ZlLiA8v/edit?usp=sharing&ouid=103042510679259893340&rtpof=true&sd=true`
+
+Дякую.
