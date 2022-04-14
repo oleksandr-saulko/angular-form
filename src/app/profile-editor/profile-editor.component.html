@@ -1,0 +1,73 @@
+<h2>Анкета Фронт-Энд разработчика</h2>
+
+<form #myForm="ngForm" [formGroup]="profileForm" (ngSubmit)="onSubmit(); myForm.resetForm();" class="form">
+
+  <mat-form-field class="full-width" appearance="fill">
+    <mat-label>Имя:</mat-label>
+    <input matInput formControlName="firstName">
+  </mat-form-field>
+  <mat-form-field class="full-width" appearance="fill">
+    <mat-label>Фамилия:</mat-label>
+    <input matInput formControlName="lastName">
+  </mat-form-field>
+
+  <mat-form-field class="full-width" appearance="fill">
+    <mat-label>Ваш день рождения</mat-label>
+    <input matInput [matDatepicker]="dob" formControlName="dateOfBirth">
+    <mat-hint>MM/DD/YYYY</mat-hint>
+    <mat-datepicker-toggle matSuffix [for]="dob"></mat-datepicker-toggle>
+    <mat-datepicker #dob></mat-datepicker>
+  </mat-form-field>
+  <div class="frameworks">
+    <mat-form-field appearance="fill">
+      <mat-label>Ваш любимый фреймворк</mat-label>
+      <mat-select formControlName="framework" (selectionChange)="setVal($any($event.value))">
+        <mat-option *ngFor="let framework of frameworks" [value]="framework.toLocaleLowerCase()">
+          {{framework}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill" *ngIf="selectedValue">
+      <mat-label>Выберите версю фреймворка</mat-label>
+      <mat-select formControlName="frameworkVersion">
+        <mat-option *ngFor="let version of frameworkVersion" [value]="version">
+          {{version}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+  </div>
+
+  <mat-form-field class="full-width" appearance="fill">
+    <mat-label>Ваш адрес эл. почты</mat-label>
+    <input matInput placeholder="pat@example.com" formControlName="email">
+  </mat-form-field>
+
+  <ng-container formArrayName="hobby">
+    <ng-container *ngFor="let hobbyForm of hobby.controls; let i = index">
+      <div class="hobby__items" [formGroupName]="i">
+        <mat-form-field appearance="fill">
+          <input matInput formControlName="name" placeholder="Ваше хобби">
+        </mat-form-field>
+
+        <mat-form-field appearance="fill">
+          <input matInput formControlName="duration" placeholder="Как долго занимаетесь">
+        </mat-form-field>
+
+        <mat-icon class="delete-btn" (click)="deleteHobby(i)">
+          delete_forever</mat-icon>
+      </div>
+    </ng-container>
+  </ng-container>
+  <div class="add-hobby">
+    Добавьте хобби (5 будет достаточно)
+    <button type="button" mat-mini-fab color="primary" (click)="addHobby()">
+      <mat-icon class="add-hobby-btn">add</mat-icon>
+    </button>
+  </div>
+  <br>
+  <br>
+
+  <button type="submit" mat-raised-button color="primary" [disabled]="!profileForm.valid">Submit</button>
+
+</form>
